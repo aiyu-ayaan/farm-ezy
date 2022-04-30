@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Phar Ezy
+  ~
+  ~ Copyright (c) 2022 . All rights reserved.
+  ~ Created by ayaan
+  ~ Last modified 23/24/2021 12:24 PM
+  ~
+  -->
+
+<resources>
+    <attr name="colorStateNavigationItem" format="color" />
+    <attr name="colorNavigationItemNormal" format="color"/>
+    <attr name="colorNavigationItemSelected" format="color" />
+    <attr name="colorNavigationItemBackgroundPressed" format="color" />
+    <attr name="colorNavigationItemBackgroundSelected" format="color" />
+    <attr name="drawableNavigationItemBackground" format="reference" />
+</resources>

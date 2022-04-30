@@ -9,9 +9,5 @@
         android:id="@+id/homeFragment"
         android:name="com.farm.ezy.home.HomeFragment"
         android:label="@string/home"
-        tools:layout="@layout/fragment_home" >
-        <argument
-            android:name="uid"
-            app:argType="string" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
 </navigation>

@@ -9,13 +9,18 @@ import androidx.navigation.fragment.findNavController
 import com.farm.ezy.core.utils.checkNumber
 import com.farm.ezy.login.databinding.FragmentLoginBinding
 import com.google.android.material.transition.MaterialSharedAxis
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class LogInFragment : Fragment(R.layout.fragment_login) {
 
     private val binding: FragmentLoginBinding by viewBinding()
+
+    @Inject
+    lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +40,17 @@ class LogInFragment : Fragment(R.layout.fragment_login) {
                 handleButtonClick(binding.outlinedTextField.editText?.text.toString())
             }
         }
+        checkCurrentUser()
+    }
+
+    private fun checkCurrentUser() {
+        if (auth.currentUser != null)
+            navigateToHome()
+    }
+
+    private fun navigateToHome() {
+        val action = LogInFragmentDirections.actionLogInFragmentToNavGraphHome()
+        findNavController().navigate(action)
     }
 
     private fun handleButtonClick(number: String) {

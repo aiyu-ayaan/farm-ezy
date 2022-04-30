@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/MainColor"
+    android:theme="@style/Theme.FarmEzy"
     tools:context=".activity.MainActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -17,7 +18,30 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/bottomLayout"
         android:layout_below="@id/main_toolbar"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
+
+    <LinearLayout
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bottom_nav"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
+            style="@style/Widget.Material3.BottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bottom_nav"
+            app:itemRippleColor="@color/MainColor"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_nav" />
+
+    </LinearLayout>
+
 </RelativeLayout>

@@ -3,10 +3,13 @@ package com.farm.ezy.activity
 import android.os.Bundle
 import android.viewbinding.library.activity.viewBinding
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.farm.ezy.R
 import com.farm.ezy.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         setContentView(binding.root)
         binding.apply {
             setSupportActionBar(binding.mainToolbar)
@@ -29,12 +33,28 @@ class MainActivity : AppCompatActivity() {
             appBarConfiguration = AppBarConfiguration(
                 setOf(
                     com.farm.ezy.login.R.id.logInFragment,
-                    com.farm.ezy.home.R.id.homeFragment
+                    com.farm.ezy.home.R.id.homeFragment,
+                    com.farm.ezy.profile.R.id.fragmentProfile
                 )
             )
+            bottomNavigation.setupWithNavController(navController)
+            bottomNavigation.setOnItemReselectedListener { }
             setupActionBarWithNavController(navController, appBarConfiguration)
         }
+        onChangeDestination()
+    }
 
+    private fun onChangeDestination() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                com.farm.ezy.home.R.id.homeFragment, com.farm.ezy.profile.R.id.fragmentProfile -> {
+                    binding.bottomLayout.isVisible = true
+                }
+                else -> {
+                    binding.bottomLayout.isVisible = false
+                }
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

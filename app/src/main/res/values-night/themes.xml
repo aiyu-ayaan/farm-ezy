@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.FarmEzy" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/accent_color</item>
+        <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorPrimaryVariant">@color/MainColor</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
@@ -12,5 +12,11 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.FarmEzy.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
+        <item name="windowSplashScreenBackground">@color/bottom_nav</item>
+        <item name="postSplashScreenTheme">@style/Theme.FarmEzy</item>
     </style>
 </resources>

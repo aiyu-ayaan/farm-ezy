@@ -10,11 +10,22 @@
 package com.farm.ezy.core.utils
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.LocaleList
 import android.view.View
+import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target
+import com.farm.ezy.core.R
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
@@ -54,44 +65,38 @@ val FragmentManager.currentNavigationFragment: Fragment?
     get() = primaryNavigationFragment?.childFragmentManager?.fragments?.first()
 
 
-//fun String.loadImage(
-//    parentView: View,
-//    view: ImageView,
-//    progressBar: ProgressBar?,
-//    cornerRadius: Int = DEFAULT_CORNER_RADIUS,
-//    isProfile: Int = 0
-//) =
-//    Glide.with(parentView)
-//        .load(this)
-//        .fitCenter()
-//        .error(if (isProfile == 0) R.drawable.ic_running_error else R.drawable.ic_profile)
-//        .listener(object : RequestListener<Drawable> {
-//            override fun onLoadFailed(
-//                e: GlideException?,
-//                model: Any?,
-//                target: com.bumptech.glide.request.target.Target<Drawable>?,
-//                isFirstResource: Boolean
-//            ): Boolean {
-//                progressBar?.visibility = View.GONE
-//                return false
-//            }
-//
-//            override fun onResourceReady(
-//                resource: Drawable?,
-//                model: Any?,
-//                target: com.bumptech.glide.request.target.Target<Drawable>?,
-//                dataSource: DataSource?,
-//                isFirstResource: Boolean
-//            ): Boolean {
-//                progressBar?.visibility = View.GONE
-//                return false
-//            }
-//
-//        })
-//        .apply(RequestOptions.bitmapTransform(RoundedCorners(cornerRadius)))
-//        .timeout(6000)
-//        .transition(DrawableTransitionOptions.withCrossFade())
-//        .into(view)
+fun String.loadImageCircular(parentView: View, view: ImageView, progressBar: ProgressBar) =
+    Glide.with(parentView)
+        .load(this)
+        .centerCrop()
+        .apply(RequestOptions().circleCrop())
+        .error(R.drawable.ic_errors)
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .listener(object : RequestListener<Drawable> {
+            override fun onLoadFailed(
+                e: GlideException?,
+                model: Any?,
+                target: Target<Drawable>?,
+                isFirstResource: Boolean
+            ): Boolean {
+                progressBar.visibility = View.GONE
+                return false
+            }
+
+            override fun onResourceReady(
+                resource: Drawable?,
+                model: Any?,
+                target: Target<Drawable>?,
+                dataSource: DataSource?,
+                isFirstResource: Boolean
+            ): Boolean {
+                progressBar.visibility = View.GONE
+                return false
+            }
+
+        })
+        .timeout(10000)
+        .into(view)
 
 private fun getSystemLocale() =
     LocaleList.getDefault().get(0).language

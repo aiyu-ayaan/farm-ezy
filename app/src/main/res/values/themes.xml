@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.FarmEzy" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/accent_color</item>
+        <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorPrimaryVariant">@color/MainColor</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -14,4 +14,47 @@
         <!-- Customize your theme here. -->
         <item name="android:windowLightStatusBar">true</item>
     </style>
+
+    <style name="Theme.FarmEzy.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
+        <item name="windowSplashScreenBackground">@color/bottom_nav</item>
+        <item name="postSplashScreenTheme">@style/Theme.FarmEzy</item>
+    </style>
+
+
+    <style name="Widget.Material3.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView" tools:ignore="PrivateResource">
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="backgroundTint">@null</item>
+        <item name="elevation" tools:ignore="PrivateResource">@dimen/m3_sys_elevation_level2</item>
+        <item name="itemActiveIndicatorStyle">
+            @style/Widget.Material3.BottomNavigationView.ActiveIndicator
+        </item>
+        <item name="itemTextAppearanceInactive">?attr/textAppearanceTitleSmall</item>
+        <item name="itemTextAppearanceActive">?attr/textAppearanceTitleSmall</item>
+        <item name="itemRippleColor">@color/m3_navigation_bar_ripple_color_selector</item>
+        <item name="itemIconTint">@color/bottom_nav_selector</item>
+        <item name="itemTextColor">@color/textColor</item>
+        <item name="itemPaddingTop">@dimen/m3_bottom_nav_item_padding_top</item>
+        <item name="itemPaddingBottom">@dimen/m3_bottom_nav_item_padding_bottom</item>
+        <item name="android:minHeight">@dimen/m3_bottom_nav_min_height</item>
+    </style>
+
+    <style name="Widget.Material3.BottomNavigationView.ActiveIndicator" parent="" tools:ignore="PrivateResource">
+        <item name="android:width">@dimen/m3_bottom_nav_item_active_indicator_width</item>
+        <item name="android:height">@dimen/m3_bottom_nav_item_active_indicator_height</item>
+        <item name="marginHorizontal">@dimen/m3_bottom_nav_item_active_indicator_margin_horizontal
+        </item>
+        <item name="shapeAppearance">
+            @style/ShapeAppearance.Material3.NavigationBarView.ActiveIndicator
+        </item>
+        <item name="android:color">@color/colorAccent</item>
+    </style>
+
+
+    <style name="Widget.Custom.NavigationView" parent="ThemeOverlay.Material3.NavigationView">
+        <item name="itemIconTint">?attr/colorStateNavigationItem</item>
+        <item name="itemTextColor">?attr/colorStateNavigationItem</item>
+        <item name="itemBackground">?attr/drawableNavigationItemBackground</item>
+    </style>
+
 </resources>

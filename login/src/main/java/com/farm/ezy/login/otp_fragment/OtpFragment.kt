@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.farm.ezy.core.models.user.User
 import com.farm.ezy.core.utils.snackBar
@@ -24,7 +23,6 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -109,7 +107,6 @@ class OtpFragment : Fragment(R.layout.fragment_otp) {
             val s = p0.smsCode
             if (s != null) {// null safety
                 binding.otpView.setOTP(s)
-                Toast.makeText(requireContext(), "$s", Toast.LENGTH_SHORT).show()
                 verifyCode(s)
             }
         }
@@ -167,23 +164,16 @@ class OtpFragment : Fragment(R.layout.fragment_otp) {
                 if (it.isSuccessful) {
                     countDown?.cancel()
                     it.result?.user?.uid?.let { uid ->
-                        logInOrSignInUser(uid)
+                        if (it.result?.additionalUserInfo?.isNewUser == true)
+                            signUp(uid)
+                        else
+                            navigateToHome()
                     }
                 } else
                     it.exception?.printStackTrace()
             }
     }
 
-    private fun logInOrSignInUser(uid: String) {
-        Toast.makeText(requireContext(), "Done", Toast.LENGTH_SHORT).show()
-        val metadata = auth.currentUser!!.metadata
-        if (metadata?.creationTimestamp == metadata?.lastSignInTimestamp) {
-            signUp(uid)
-        } else {
-            navigateToHome(uid)
-        }
-
-    }
 
     private fun signUp(uid: String) {
         val ref = db.collection("Users")
@@ -191,7 +181,7 @@ class OtpFragment : Fragment(R.layout.fragment_otp) {
         ref.document(uid).set(user)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    navigateToHome(uid)
+                    navigateToHome()
                 } else {
                     auth.signOut()
                     binding.root.snackBar(it.exception.toString(), null, null)
@@ -199,18 +189,20 @@ class OtpFragment : Fragment(R.layout.fragment_otp) {
             }
     }
 
-    private fun navigateToHome(uid: String) {
+    private fun navigateToHome() {
         exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, /* forward= */ true)
         reenterTransition =
             MaterialSharedAxis(MaterialSharedAxis.Z, /* forward= */ false)
-        OtpFragmentDirections.actionOtpViewToNavGraphHome().let {
-            findNavController().navigate(
-                it.actionId,
-                Bundle().apply {
-                    putString("uid", uid)
-                }
-            )
-        }
+//        OtpFragmentDirections.actionOtpViewToNavGraphHome().let {
+//            findNavController().navigate(
+//                it.actionId,
+//                Bundle().apply {
+//                    putString("uid", uid)
+//                }
+//            )
+//        }
+        val action = OtpFragmentDirections.actionOtpViewToNavGraphHome()
+        findNavController().navigate(action)
 
     }
 
