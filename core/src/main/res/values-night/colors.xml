@@ -23,4 +23,5 @@
 
     <color name="bottom_nav_scrim_color">#304c58</color>
     <color name="logo">#4b4c4e</color>
+    <color name="colorAccent">#3ddc84</color>
 </resources>

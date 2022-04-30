@@ -4,6 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android Project/Sem 6 Project/Farm-Ezy/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/Android Project/Sem 6 Project/Farm-Ezy/app/src/main/res/layout/fragment_login.xml" value="0.3625" />
+        <entry key="..\:/Android Project/Sem 6 Project/Farm-Ezy/home/src/main/res/layout/fragment_home.xml" value="0.3625" />
+        <entry key="..\:/Android Project/Sem 6 Project/Farm-Ezy/login/src/main/res/drawable/ic_login_screen_img.xml" value="0.2155" />
+        <entry key="..\:/Android Project/Sem 6 Project/Farm-Ezy/login/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Android Project/Sem 6 Project/Farm-Ezy/login/src/main/res/layout/fragment_otp.xml" value="0.3625" />
       </map>
     </option>
   </component>

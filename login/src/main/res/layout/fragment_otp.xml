@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/MainColor"
+    android:theme="@style/Theme.Core"
+    tools:context="com.farm.ezy.login.otp_fragment.OtpFragment">
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progress_bar_otp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:background="@color/MainColor"
+        android:progressTint="@color/colorAccent"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_below="@id/progress_bar_otp"
+        android:padding="@dimen/grid_2"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_view_verify_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/verify_detail"
+            android:textAllCaps="true"
+            android:textColor="@color/textColor"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_otp_send_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:hint="@string/otp_send_detail"
+            android:textColorHint="@color/textColorSecondary"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/text_view_verify_detail"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_verify_detail" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loading"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_otp_send_detail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/text_view_verify_detail"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="Verification.json"
+            app:lottie_loop="true" />
+
+        <TextView
+            android:id="@+id/text_view_enter_otp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/enter_otp"
+            android:textAllCaps="true"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@+id/text_view_otp_send_detail"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_otp_send_detail"
+            tools:ignore="SmallSp" />
+
+        <in.aabhasjindal.otptextview.OtpTextView
+            android:id="@+id/otp_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/textColor"
+            app:bar_active_color="@color/colorAccent"
+            app:bar_enabled="true"
+            app:bar_height="2dp"
+            app:height="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_enter_otp"
+            app:length="6"
+            app:otp_text_size="24dp"
+            app:width="40dp" />
+
+        <TextView
+            android:id="@+id/text_view_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:textColor="@color/textColorSecondary"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_resend"
+            app:layout_constraintEnd_toStartOf="@+id/text_view_resend"
+            app:layout_constraintTop_toTopOf="@+id/text_view_resend"
+            tools:text="00:59" />
+
+        <TextView
+            android:id="@+id/text_view_resend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:alpha="0.4"
+            android:clickable="false"
+            android:text="@string/resend"
+            android:textAllCaps="true"
+            android:textColor="@android:color/holo_blue_light"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/otp_view" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

@@ -17,3 +17,4 @@ rootProject.name = "Farm-Ezy"
 include ':app'
 include ':core'
 include ':login'
+include ':home'
