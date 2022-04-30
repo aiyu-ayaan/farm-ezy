@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="phone_number_hint">10 अंक मोबाइल नंबर</string>
+    <string name="sign_in_continue">Continue</string>
+    <string name="login_hint">Enter your phone number to proceed</string>
+    <string name="phone_number_warning">Please provide a valid 10 digit phone number</string>
+    <string name="blank">"  "</string>
+    <string name="verify_detail">Verify Details</string>
+    <string name="otp_send_detail">OTP send to %s</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="resend">Resend</string>
+    <string name="phone_number">+91 %s</string>
+    <string name="error">Error %s</string>
+    <string name="code_send">Code Send</string>
+    <string name="login_image_des">LogIn Image</string>
+    <string name="home">Home</string>
+</resources>
