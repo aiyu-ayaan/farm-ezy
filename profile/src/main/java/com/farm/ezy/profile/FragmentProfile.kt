@@ -38,22 +38,36 @@ class FragmentProfile : Fragment(R.layout.fragment_profile) {
             buttonOrders.setOnClickListener {
                 navigateToOrder()
             }
+            buttonAddress.setOnClickListener {
+                navigateToAddress()
+            }
         }
         getData()
+    }
+
+    private fun navigateToAddress() {
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ true)
+        returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ false)
+        val action = FragmentProfileDirections.actionFragmentProfileToFragmentAddress(
+            auth.currentUser?.uid ?: "zcUL7f9HDGbJWdxZ1bYLcvfwTFA3"
+        )
+        findNavController().navigate(action)
     }
 
     private fun navigateToOrder() {
         enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ true)
         returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ false)
         val action =
-            FragmentProfileDirections.actionFragmentProfileToOrderFragment(auth.currentUser?.uid!!)
+            FragmentProfileDirections.actionFragmentProfileToOrderFragment(
+                auth.currentUser?.uid ?: "zcUL7f9HDGbJWdxZ1bYLcvfwTFA3"
+            )
         findNavController().navigate(action)
 
     }
 
     private fun getData() {
         lifecycleScope.launchWhenStarted {
-            viewModel.getUser(auth.uid!!).collectLatest {
+            viewModel.getUser(auth.uid ?: "zcUL7f9HDGbJWdxZ1bYLcvfwTFA3").collectLatest {
                 when (it) {
                     is DataState.Error -> {
                         Toast.makeText(requireContext(), "${it.exception}", Toast.LENGTH_SHORT)

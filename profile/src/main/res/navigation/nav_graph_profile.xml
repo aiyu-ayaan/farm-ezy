@@ -34,5 +34,34 @@
         <argument
             android:name="uid"
             app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentAddress_to_bottomSheetAddEditAddress"
+            app:destination="@id/bottomSheetAddEditAddress" />
     </fragment>
+    <dialog
+        android:id="@+id/bottomSheetAddEditAddress"
+        android:name="com.farm.ezy.profile.address.add_edit_address.BottomSheetAddEditAddress"
+        android:label="bottom_sheet_add_edit"
+        tools:layout="@layout/bottom_sheet_add_edit" >
+        <argument
+            android:name="address"
+            app:argType="com.farm.ezy.core.models.address.AddressSet"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="uid"
+            app:argType="string" />
+    </dialog>
+    <dialog
+        android:id="@+id/dialogAddress"
+        android:name="com.farm.ezy.profile.address.delete_dialog.DialogAddress"
+        android:label="DialogAddress" >
+        <argument
+            android:name="uid"
+            app:argType="string" />
+        <argument
+            android:name="address"
+            app:argType="com.farm.ezy.core.models.address.AddressSet" />
+    </dialog>
+    <action android:id="@+id/action_global_dialogAddress" app:destination="@id/dialogAddress" />
 </navigation>

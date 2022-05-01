@@ -1,5 +1,7 @@
 package com.farm.ezy.core.repositories
 
+import com.farm.ezy.core.models.address.AddressGet
+import com.farm.ezy.core.models.address.AddressSet
 import com.farm.ezy.core.models.order.Orders
 import com.farm.ezy.core.models.user.UserGet
 import com.farm.ezy.core.utils.DataState
@@ -30,7 +32,6 @@ class UserRepository @Inject constructor(
             awaitClose()
         } catch (e: Exception) {
             send(DataState.Error(e))
-            awaitClose()
         }
     }
 
@@ -55,7 +56,30 @@ class UserRepository @Inject constructor(
             awaitClose()
         } catch (e: java.lang.Exception) {
             send(DataState.Error(e))
+        }
+    }
 
+    fun getAddress(uid: String): Flow<DataState<List<AddressGet>>> = channelFlow {
+        try {
+            val d = db.collection("Users").document(uid)
+                .collection("address").orderBy("created", Query.Direction.ASCENDING)
+            d.addSnapshotListener { value, error ->
+                launch(Dispatchers.Main) {
+                    if (error != null) {
+                        send(DataState.Error(error))
+                    } else {
+                        if (value!!.isEmpty) {
+                            send(DataState.Error(NoItemFoundException("No Data Found")))
+                        } else {
+                            val address = value.toObjects(AddressGet::class.java)
+                            send(DataState.Success(address))
+                        }
+                    }
+                }
+            }
+            awaitClose()
+        } catch (e: java.lang.Exception) {
+            send(DataState.Error(e))
         }
     }
 }

@@ -3,6 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/grid_1"
+    android:orientation="vertical"
+    android:padding="@dimen/grid_1"
+    android:theme="@style/Theme.Core"
+    android:transitionGroup="true"
     tools:context="com.farm.ezy.profile.address.FragmentAddress">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_address"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/button_add_address" />
+
+    <Button
+        android:id="@+id/button_add_address"
+        style="@style/Widget.Material3.Button.Icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/grid_2"
+        android:text="@string/add"
+        android:textColor="@color/textColor" />
 </RelativeLayout>

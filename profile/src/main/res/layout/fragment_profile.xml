@@ -114,7 +114,7 @@
                             app:dividerColor="@color/card_corner" />
 
                         <Button
-                            android:id="@+id/text_view_address"
+                            android:id="@+id/button_address"
                             style="@style/Widget.Material3.Button.TextButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

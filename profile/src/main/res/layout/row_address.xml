@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/grid_0_5"
+    android:layout_marginVertical="@dimen/grid_0_5"
+    android:theme="@style/Theme.Core"
+    app:cardBackgroundColor="@color/MainColor"
+    app:strokeColor="@color/card_corner">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/grid_1">
+
+        <TextView
+            android:id="@+id/text_view_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textStyle="bold"
+            tools:text="Ayaan Ansari" />
+
+        <TextView
+            android:id="@+id/text_view_house"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_1"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            tools:text="House No" />
+
+        <TextView
+            android:id="@+id/text_view_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_1"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            tools:text="@string/address" />
+
+        <TextView
+            android:id="@+id/text_view_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_1"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            tools:text="@string/phone_number_address" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_1"
+            android:orientation="horizontal"
+            android:padding="@dimen/grid_0_5">
+
+            <Button
+                android:id="@+id/button_edit"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="@dimen/grid_1"
+                android:gravity="center"
+                app:strokeColor="@color/card_corner"
+                android:text="@string/edit"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/textColor"
+                app:cornerRadius="@dimen/grid_1" />
+
+            <Button
+                android:id="@+id/button_remove"
+                style="?attr/materialButtonOutlinedStyle"
+                app:strokeColor="@color/card_corner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="@dimen/grid_1"
+                android:gravity="center"
+                android:text="@string/remove"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/textColor"
+                app:cornerRadius="@dimen/grid_1" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

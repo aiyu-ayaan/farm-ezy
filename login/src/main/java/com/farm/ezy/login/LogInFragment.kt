@@ -40,7 +40,8 @@ class LogInFragment : Fragment(R.layout.fragment_login) {
                 handleButtonClick(binding.outlinedTextField.editText?.text.toString())
             }
         }
-        checkCurrentUser()
+        navigateToHome()
+//        checkCurrentUser()
     }
 
     private fun checkCurrentUser() {
