@@ -18,15 +18,16 @@
     <string name="profile">Profile</string>
     <string name="user_detail">User Detail</string>
     <string name="app_name_with_version">Farm Ezy Version 1.0</string>
-    <string name="orders_watchlist">Orders &amp; WatchList</string>
+    <string name="orders_watchlist">Orders &amp; WishList</string>
     <string name="orders">Orders</string>
-    <string name="watchlist">WatchList</string>
+    <string name="watchlist">Wish List</string>
     <string name="edit">Edit</string>
     <string name="remove">Remove</string>
     <string name="content_image">Content Image</string>
     <string name="delivered_at">Delivered at :- %s</string>
     <string name="delivered_to">Delivered to :- %s</string>
     <string name="money">Price\n₹ %s</string>
+    <string name="price">₹ %s</string>
     <string name="quantity">Quantity\nx %s</string>
     <string name="detail"><u>Detail</u></string>
     <string name="address">Address</string>
@@ -50,4 +51,6 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="deleted">Deleted</string>
+    <string name="insecticides">Insecticides</string>
+    <string name="view_all">View All</string>
 </resources>

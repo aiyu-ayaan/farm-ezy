@@ -1,13 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nested_scroll_view_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/grid_1"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    android:paddingBottom="@dimen/grid_6"
+    android:theme="@style/Theme.Core"
     tools:context="com.farm.ezy.home.HomeFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/phone_number" />
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/grid_1">
+
+        <TextView
+            android:id="@+id/text_view_insecticides"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/grid_1"
+            android:layout_marginBottom="@dimen/grid_1"
+            android:text="@string/insecticides"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_view_view_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/grid_1"
+            android:layout_marginBottom="@dimen/grid_1"
+            android:text="@string/view_all"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            tools:ignore="RelativeOverlap" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_insecticides"
+            app:cardBackgroundColor="@color/MainColor"
+            app:strokeColor="@color/card_corner">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/show_insecticides"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>
