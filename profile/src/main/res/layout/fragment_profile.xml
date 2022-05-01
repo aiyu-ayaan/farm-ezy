@@ -10,85 +10,187 @@
     android:theme="@style/Theme.Core"
     tools:context="com.farm.ezy.profile.FragmentProfile">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/grid_1">
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/text_view_user_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_0_5"
-            android:layout_marginTop="@dimen/grid_1"
-            android:text="@string/user_detail" />
-
-        <com.google.android.material.card.MaterialCardView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_view_user_detail"
-            android:layout_marginTop="@dimen/grid_1"
-            app:cardBackgroundColor="@color/MainColor"
-            app:strokeColor="@color/card_corner">
+            android:padding="@dimen/grid_1">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
+                android:id="@+id/text_view_user_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="@dimen/grid_0_5"
+                android:layout_marginTop="@dimen/grid_1"
+                android:text="@string/user_detail" />
+
+            <TextView
+                android:id="@+id/text_view_user_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/grid_1"
+                android:layout_marginEnd="@dimen/grid_0_5"
+                android:text="@string/edit"
+                tools:ignore="RelativeOverlap" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_view_user"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/grid_1">
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_view_user_detail"
+                android:layout_marginTop="@dimen/grid_1"
+                app:cardBackgroundColor="@color/MainColor"
+                app:strokeColor="@color/card_corner">
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="@dimen/profile_image_size"
-                    android:layout_height="@dimen/profile_image_size"
-                    android:contentDescription="@string/blank"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/avatars" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/grid_1">
 
-                <com.google.android.material.progressindicator.CircularProgressIndicator
-                    android:id="@+id/progress_circular_profile"
-                    android:layout_width="wrap_content"
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="@dimen/profile_image_size"
+                        android:layout_height="@dimen/profile_image_size"
+                        android:contentDescription="@string/blank"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@tools:sample/avatars" />
+
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/progress_circular_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView"
+                        app:layout_constraintStart_toStartOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/text_view_user_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/grid_1"
+                            android:padding="@dimen/grid_1"
+                            android:textAppearance="?attr/textAppearanceHeadline6"
+                            tools:text="Ayaan Ansari" />
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/grid_2"
+                            app:dividerColor="@color/card_corner" />
+
+                        <TextView
+                            android:id="@+id/text_view_phone_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/grid_1"
+                            android:layout_marginTop="@dimen/grid_0_5"
+                            android:padding="@dimen/grid_1"
+                            android:text="@string/phone_number"
+                            android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/grid_2"
+                            app:dividerColor="@color/card_corner" />
+
+                        <Button
+                            android:id="@+id/text_view_address"
+                            style="@style/Widget.Material3.Button.TextButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/grid_1"
+                            android:layout_marginTop="@dimen/grid_0_5"
+                            android:gravity="start|center_vertical"
+                            android:text="@string/address"
+                            android:textAppearance="?attr/textAppearanceBodyMedium"
+                            android:textColor="@color/textColor"
+                            app:cornerRadius="@dimen/grid_1" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/text_view_orders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_view_user"
+                android:layout_marginStart="@dimen/grid_0_5"
+                android:layout_marginTop="@dimen/grid_1"
+                android:text="@string/orders_watchlist" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_view_orders"
+                android:layout_marginTop="@dimen/grid_1"
+                app:cardBackgroundColor="@color/MainColor"
+                app:strokeColor="@color/card_corner">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:indeterminate="true"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView"
-                    app:layout_constraintStart_toStartOf="@+id/imageView"
-                    app:layout_constraintTop_toTopOf="@+id/imageView" />
+                    android:orientation="vertical"
+                    android:padding="@dimen/grid_0_5">
 
-                <TextView
-                    android:id="@+id/text_view_user_name"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/grid_1"
-                    android:layout_marginTop="@dimen/grid_1"
-                    android:padding="@dimen/grid_1"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    app:drawableEndCompat="@drawable/ic_edit"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Ayaan Ansari" />
+                    <Button
+                        android:id="@+id/button_orders"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:padding="@dimen/grid_2"
+                        android:text="@string/orders"
+                        android:textAppearance="?attr/textAppearanceBodyLarge"
+                        android:textColor="@color/textColor"
+                        app:cornerRadius="@dimen/grid_1" />
 
-                <TextView
-                    android:id="@+id/text_view_phone_number"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/grid_1"
-                    android:padding="@dimen/grid_1"
-                    android:text="@string/phone_number"
-                    android:textAppearance="?attr/textAppearanceBodyMedium"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/text_view_user_name" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:dividerColor="@color/card_corner" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:textAppearance="?attr/textAppearanceCaption"
-            android:text="@string/app_name_with_version" />
-    </RelativeLayout>
+                    <Button
+                        android:id="@+id/button_watchlist"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:padding="@dimen/grid_2"
+                        android:text="@string/watchlist"
+                        android:textAppearance="?attr/textAppearanceBodyLarge"
+                        android:textColor="@color/textColor"
+                        app:cornerRadius="@dimen/grid_1" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/app_name_with_version"
+                android:textAppearance="?attr/textAppearanceCaption" />
+        </RelativeLayout>
+    </ScrollView>
 </androidx.core.widget.NestedScrollView>

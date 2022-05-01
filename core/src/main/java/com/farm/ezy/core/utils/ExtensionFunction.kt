@@ -9,6 +9,7 @@
 
 package com.farm.ezy.core.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.LocaleList
@@ -27,6 +28,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.farm.ezy.core.R
 import com.google.android.material.snackbar.Snackbar
+import java.text.SimpleDateFormat
 import java.util.*
 
 /**
@@ -97,6 +99,51 @@ fun String.loadImageCircular(parentView: View, view: ImageView, progressBar: Pro
         })
         .timeout(10000)
         .into(view)
+
+fun String.loadImageDefault(
+    parentView: View,
+    view: ImageView,
+    progressBar: ProgressBar?
+) = this.apply {
+    Glide.with(parentView)
+        .load(this)
+        .error(R.drawable.ic_errors)
+        .listener(object : RequestListener<Drawable> {
+            override fun onLoadFailed(
+                e: GlideException?,
+                model: Any?,
+                target: Target<Drawable>?,
+                isFirstResource: Boolean
+            ): Boolean {
+                progressBar?.visibility = View.GONE
+                return false
+            }
+
+            override fun onResourceReady(
+                resource: Drawable?,
+                model: Any?,
+                target: Target<Drawable>?,
+                dataSource: DataSource?,
+                isFirstResource: Boolean
+            ): Boolean {
+                progressBar?.visibility = View.GONE
+
+                return false
+            }
+
+        })
+        .timeout(6000)
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .into(view)
+}
+
+
+@SuppressLint("SimpleDateFormat")
+fun Long.convertLongToTime(pattern: String = "dd/MM/yyyy"): String =
+    SimpleDateFormat(pattern).run {
+        val date = Date(this@convertLongToTime)
+        this.format(date)
+    }
 
 private fun getSystemLocale() =
     LocaleList.getDefault().get(0).language

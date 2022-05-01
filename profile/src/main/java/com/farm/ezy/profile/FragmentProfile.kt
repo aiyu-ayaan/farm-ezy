@@ -7,10 +7,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.farm.ezy.core.models.user.UserGet
 import com.farm.ezy.core.utils.DataState
 import com.farm.ezy.core.utils.loadImageCircular
 import com.farm.ezy.profile.databinding.FragmentProfileBinding
+import com.google.android.material.transition.MaterialSharedAxis
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,7 +34,24 @@ class FragmentProfile : Fragment(R.layout.fragment_profile) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        getUser(auth.uid!!)
+        binding.apply {
+            buttonOrders.setOnClickListener {
+                navigateToOrder()
+            }
+        }
+        getData()
+    }
+
+    private fun navigateToOrder() {
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ true)
+        returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ false)
+        val action =
+            FragmentProfileDirections.actionFragmentProfileToOrderFragment(auth.currentUser?.uid!!)
+        findNavController().navigate(action)
+
+    }
+
+    private fun getData() {
         lifecycleScope.launchWhenStarted {
             viewModel.getUser(auth.uid!!).collectLatest {
                 when (it) {
@@ -49,15 +68,6 @@ class FragmentProfile : Fragment(R.layout.fragment_profile) {
                 }
             }
         }
-    }
-
-    private fun getUser(uid: String) {
-        db.collection("Users").document(uid)
-            .addSnapshotListener { documentSnapShot, _ ->
-                val user = documentSnapShot?.toObject(UserGet::class.java)
-                setViews(user!!)
-            }
-
     }
 
     private fun setViews(data: UserGet) {
