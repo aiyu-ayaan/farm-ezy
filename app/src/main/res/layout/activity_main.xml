@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:background="@color/bottom_nav"
             app:itemRippleColor="@color/MainColor"
+
             app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_nav" />
 

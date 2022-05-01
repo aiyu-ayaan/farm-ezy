@@ -33,7 +33,7 @@
         <item name="itemTextAppearanceActive">?attr/textAppearanceTitleSmall</item>
         <item name="itemRippleColor">@color/m3_navigation_bar_ripple_color_selector</item>
         <item name="itemIconTint">@color/bottom_nav_selector</item>
-        <item name="itemTextColor">@color/textColor</item>
+        <item name="itemTextColor">@color/bottom_nav_selector</item>
         <item name="itemPaddingTop">@dimen/m3_bottom_nav_item_padding_top</item>
         <item name="itemPaddingBottom">@dimen/m3_bottom_nav_item_padding_bottom</item>
         <item name="android:minHeight">@dimen/m3_bottom_nav_min_height</item>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="login">Log In</string>
     <string name="phone_number_hint">10 अंक मोबाइल नंबर</string>
     <string name="sign_in_continue">Continue</string>
     <string name="login_hint">Enter your phone number to proceed</string>
@@ -14,4 +15,39 @@
     <string name="code_send">Code Send</string>
     <string name="login_image_des">LogIn Image</string>
     <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="user_detail">User Detail</string>
+    <string name="app_name_with_version">Farm Ezy Version 1.0</string>
+    <string name="orders_watchlist">Orders &amp; WatchList</string>
+    <string name="orders">Orders</string>
+    <string name="watchlist">WatchList</string>
+    <string name="edit">Edit</string>
+    <string name="remove">Remove</string>
+    <string name="content_image">Content Image</string>
+    <string name="delivered_at">Delivered at :- %s</string>
+    <string name="delivered_to">Delivered to :- %s</string>
+    <string name="money">Price\n₹ %s</string>
+    <string name="quantity">Quantity\nx %s</string>
+    <string name="detail"><u>Detail</u></string>
+    <string name="address">Address</string>
+    <string name="add">Add</string>
+    <string name="phone_number_address">Phone number: %s</string>
+    <string name="address_detail">%s , %s %s ,%s </string>
+    <string name="dismiss">Dismiss</string>
+    <string name="name">Name</string>
+    <string name="house_no">House No</string>
+    <string name="postal_code">Pin Code</string>
+    <string name="land_mark">LandMark</string>
+    <string name="area">Area</string>
+    <string name="town">Town</string>
+    <string name="state">State</string>
+    <string name="phone_number_title">Phone Number</string>
+    <string name="empty_error">Can\'t be Empty</string>
+    <string name="number_error">Check your number</string>
+    <string name="postal_code_error">Check your pin code</string>
+    <string name="added">Added</string>
+    <string name="delete_warning">Do you want to delete..</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="deleted">Deleted</string>
 </resources>
