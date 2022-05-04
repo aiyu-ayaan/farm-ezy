@@ -1,6 +1,7 @@
 package com.farm.ezy.core.repositories
 
 import com.farm.ezy.core.models.address.AddressGet
+import com.farm.ezy.core.models.items.ItemGet
 import com.farm.ezy.core.models.order.Orders
 import com.farm.ezy.core.models.user.UserGet
 import com.farm.ezy.core.utils.DataState
@@ -34,21 +35,22 @@ class UserRepository @Inject constructor(
         }
     }
 
-//    fun getOrder(): Flow<DataState<UserGet>> = channelFlow {
-//        try {
-//            db.collection("Users").document(uid)
-//                .addSnapshotListener { documentSnapShot, error ->
-//                    launch(Dispatchers.Main) {
-//                        send(DataState.Loading)
-//                        val user = documentSnapShot?.toObject(UserGet::class.java)
-//                        send(DataState.Success(user!!))
-//                    }
-//                }
-//            awaitClose()
-//        } catch (e: Exception) {
-//            send(DataState.Error(e))
-//        }
-//    }
+    fun getOrder(type: String, path: String): Flow<DataState<ItemGet>> = channelFlow {
+        try {
+            db.collection(type).document(path)
+                .addSnapshotListener { documentSnapShot, error ->
+                    launch(Dispatchers.Main) {
+                        send(DataState.Loading)
+                        val item = documentSnapShot?.toObject(ItemGet::class.java)
+                        send(DataState.Success(item!!))
+                    }
+                }
+            awaitClose()
+        } catch (e: Exception) {
+            send(DataState.Error(e))
+        }
+    }
+
 
     fun getOrders(uid: String): Flow<DataState<List<Orders>>> = channelFlow {
         try {

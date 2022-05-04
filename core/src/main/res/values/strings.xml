@@ -24,7 +24,7 @@
     <string name="edit">Edit</string>
     <string name="remove">Remove</string>
     <string name="content_image">Content Image</string>
-    <string name="delivered_at">Delivered at :- %s</string>
+    <string name="delivered_at">Purchased at :- %s</string>
     <string name="delivered_to">Delivered to :- %s</string>
     <string name="money">Price\n₹ %s</string>
     <string name="price">₹ %s</string>
@@ -63,5 +63,8 @@
     <string name="payment_type">Payment Type : %s</string>
     <string name="payment">Payment</string>
     <string name="confirm_order">Confirm Order</string>
-    <string name="proceed_to_payment">Proceed to payment</string>
+    <string name="proceed">Proceed</string>
+    <string name="cod">Cod</string>
+    <string name="online">Online</string>
+    <string name="payment_type_text">Payment Type :</string>
 </resources>

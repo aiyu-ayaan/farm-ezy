@@ -23,9 +23,8 @@
             android:defaultValue="1"
             app:argType="integer" />
         <action
-            android:id="@+id/action_fragmentAddress_to_fragmentOrderPlaced"
-            app:destination="@id/fragmentOrderPlaced"
-            app:popUpTo="@id/nav_graph_address" />
+            android:id="@+id/action_fragmentAddress_to_fragmentPaymentMethod"
+            app:destination="@id/fragmentPaymentMethod" />
     </fragment>
     <dialog
         android:id="@+id/bottomSheetAddEditAddress"
@@ -49,9 +48,9 @@
         <argument
             android:name="order"
             app:argType="com.farm.ezy.core.models.order.OrdersSet" />
-        <action
-            android:id="@+id/action_fragmentOrderPlaced_to_fragmentPaymentMethod"
-            app:destination="@id/fragmentPaymentMethod" />
+        <argument
+            android:name="uid"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragmentPaymentMethod"
@@ -61,5 +60,12 @@
         <argument
             android:name="order"
             app:argType="com.farm.ezy.core.models.order.OrdersSet" />
+        <action
+            android:id="@+id/action_fragmentPaymentMethod_to_fragmentOrderPlaced"
+            app:destination="@id/fragmentOrderPlaced"
+            app:popUpTo="@id/nav_graph_address" />
+        <argument
+            android:name="uid"
+            app:argType="string" />
     </fragment>
 </navigation>

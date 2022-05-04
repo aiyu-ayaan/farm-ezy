@@ -3,7 +3,9 @@ package com.farm.ezy.core.models.order
 import android.os.Parcelable
 import androidx.annotation.Keep
 import androidx.recyclerview.widget.DiffUtil
+import com.farm.ezy.core.utils.EntityMapper
 import kotlinx.android.parcel.Parcelize
+import javax.inject.Inject
 
 @Keep
 data class Orders(
@@ -16,7 +18,8 @@ data class Orders(
     val number: String? = null,
     val path: String? = null,
     val price: String? = null,
-    val quantity: Int? = null
+    val quantity: Int? = null,
+    val type: String? = null
 )
 
 @Keep
@@ -31,7 +34,8 @@ data class OrdersSet(
     val location: String,
     val buyOn: Long,
     val path: String,
-    val payment: String = "Cod"
+    val payment: String = "Cod",
+    val type: String?
 ) : Parcelable
 
 class DiffUtilOrders : DiffUtil.ItemCallback<Orders>() {
@@ -40,5 +44,26 @@ class DiffUtilOrders : DiffUtil.ItemCallback<Orders>() {
 
     override fun areContentsTheSame(oldItem: Orders, newItem: Orders): Boolean =
         oldItem == newItem
+
+}
+
+class OrderMapper @Inject constructor() : EntityMapper<Orders, OrdersSet> {
+    override fun mapFromEntity(entity: Orders): OrdersSet =
+        OrdersSet(
+            entity.name!!,
+            entity.name_hi!!,
+            entity.imageLink!!,
+            entity.quantity!!,
+            entity.price!!,
+            entity.number!!,
+            entity.location!!,
+            entity.buyOn!!,
+            entity.path!!,
+            entity.payment!!,
+            entity.type
+        )
+
+    override fun mapToEntity(domainEntity: OrdersSet): Orders =
+        Orders()
 
 }

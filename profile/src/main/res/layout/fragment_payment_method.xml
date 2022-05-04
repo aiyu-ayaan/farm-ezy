@@ -1,8 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.farm.ezy.profile.order_placed.FragmentPaymentMethod"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/grid_1"
+    android:padding="@dimen/grid_1"
+    android:theme="@style/Theme.Core"
+    tools:context="com.farm.ezy.profile.order_placed.FragmentPaymentMethod">
 
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/MainColor"
+        app:strokeColor="@color/card_corner">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/grid_1">
+
+            <TextView
+                android:id="@+id/text_view_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_0_5"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                app:layout_constraintBottom_toBottomOf="@+id/image_view_item"
+                tools:text="CORAGEN INSECTICIDE" />
+
+            <TextView
+                android:id="@+id/text_view_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_0_5"
+                android:layout_marginTop="@dimen/grid_1"
+                android:textAppearance="?attr/textAppearanceCaption"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/image_view_item"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_item_name"
+                tools:text="Main Road, Near Hotel ChuruVilla , Ranchi" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/text_view_payment_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card_view_order"
+        android:layout_marginTop="@dimen/grid_1"
+        android:text="@string/payment_type_text"
+        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_payment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_payment_type"
+        android:layout_marginTop="@dimen/grid_1"
+        android:checkedButton="@id/radio_button_cod"
+        android:padding="@dimen/grid_1">
+
+        <RadioButton
+            android:id="@+id/radio_button_cod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/grid_2"
+            android:padding="@dimen/grid_1"
+            android:text="@string/cod" />
+
+        <RadioButton
+            android:id="@+id/radio_button_online"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/grid_1"
+            android:text="@string/online" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_proceed"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radio_group_payment"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/grid_2"
+        android:layout_marginEnd="@dimen/grid_1"
+        android:gravity="start"
+        android:padding="@dimen/grid_2"
+        android:text="@string/proceed"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="@color/colorAccent"
+        app:cornerRadius="@dimen/grid_1" />
 </RelativeLayout>

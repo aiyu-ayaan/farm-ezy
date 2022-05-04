@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_view_address"
                 android:layout_marginTop="@dimen/grid_1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="@string/money" />
 
             <TextView
@@ -125,7 +125,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="@dimen/grid_1"
                 android:layout_toStartOf="@+id/text_view_show_detail"
-                android:padding="@dimen/grid_1"
+                android:gravity="start"
                 android:text="@string/payment_type"
                 android:textAppearance="?attr/textAppearanceCaption" />
         </RelativeLayout>

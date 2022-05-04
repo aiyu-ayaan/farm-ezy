@@ -69,6 +69,10 @@ class OrderAdapter(
                         com.farm.ezy.core.R.string.quantity,
                         order.quantity.toString()
                     )
+                textViewPaymentType.text = binding.root.context.resources.getString(
+                    com.farm.ezy.core.R.string.payment_type,
+                    order.payment.toString()
+                )
                 order.imageLink!!.loadImageDefault(
                     binding.root,
                     binding.imageViewItem,

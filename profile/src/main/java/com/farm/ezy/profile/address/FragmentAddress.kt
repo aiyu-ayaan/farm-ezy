@@ -80,11 +80,11 @@ class FragmentAddress : Fragment(R.layout.fragment_address) {
             address.number,
             "${address.name} ${address.houseNo} ${address.area} ${address.landMark} ${address.town} ${address.posterCode} ${address.state}",
             System.currentTimeMillis(),
-            item.path,
+            item.path, type = item.type
         )
         findNavController().navigate(
-            FragmentAddressDirections.actionFragmentAddressToFragmentOrderPlaced(
-                order
+            FragmentAddressDirections.actionFragmentAddressToFragmentPaymentMethod(
+                order, uid = viewModel.uid!!
             )
         )
 

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/grid_1"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    android:paddingBottom="@dimen/grid_6"
+    android:theme="@style/Theme.Core"
+    tools:context="com.farm.ezy.profile.item_detail.ItemDetailFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/grid_0_5">
+
+        <ImageView
+            android:id="@+id/image_view_item"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/home_item_size"
+            android:contentDescription="@string/blank"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_bar_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:layout_constraintBottom_toBottomOf="@+id/image_view_item"
+            app:layout_constraintEnd_toEndOf="@+id/image_view_item"
+            app:layout_constraintStart_toStartOf="@+id/image_view_item"
+            app:layout_constraintTop_toTopOf="@+id/image_view_item" />
+
+        <TextView
+            android:id="@+id/text_view_item_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_1"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/image_view_item"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_item"
+            tools:text="XYZ Medicine" />
+
+        <TextView
+            android:id="@+id/text_view_item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_1"
+            android:text="@string/price"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_item_name" />
+
+        <TextView
+            android:id="@+id/text_view_item_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_1"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_item_name"
+            tools:text="2 ml" />
+
+        <LinearLayout
+            android:id="@+id/linear_layout_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_0_5"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_item_price">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/quantity_item" />
+
+            <EditText
+                android:id="@+id/edit_text_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="2"
+                android:padding="@dimen/grid_1"
+                android:text="@string/_1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_layout_buy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_0_5"
+            android:orientation="horizontal"
+            android:padding="@dimen/grid_0_5"
+            android:weightSum="2"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_quantity"
+            tools:layout_editor_absoluteX="4dp">
+
+
+            <Button
+                android:id="@+id/button_buy"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/grid_1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/buy"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/colorAccent"
+                app:cornerRadius="@dimen/grid_1"
+                app:strokeColor="@color/card_corner" />
+
+            <Button
+                android:id="@+id/button_wish_list"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/grid_1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/wish_list"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/textColorSecondary"
+                app:cornerRadius="@dimen/grid_1"
+                app:strokeColor="@color/card_corner" />
+
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/material_div_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_0_5"
+            app:dividerColor="@color/card_corner"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_buy" />
+
+        <TextView
+            android:id="@+id/text_view_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_0_5"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            app:layout_constraintTop_toBottomOf="@+id/material_div_1"
+            tools:layout_editor_absoluteX="4dp"
+            tools:text="fjkjdfgkjdgjkdjgdkghdfjgjdkfghdfjkg" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/material_div_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_0_5"
+            app:dividerColor="@color/card_corner"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_description" />
+
+        <TextView
+            android:id="@+id/text_view_seller"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/seller"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/material_div_2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

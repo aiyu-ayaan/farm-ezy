@@ -7,7 +7,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.farm.ezy.core.models.items.ItemMapper
+import com.farm.ezy.core.models.order.Orders
 import com.farm.ezy.core.utils.DataState
 import com.farm.ezy.core.utils.NoItemFoundException
 import com.farm.ezy.profile.R
@@ -26,6 +29,9 @@ class OrderFragment : Fragment(R.layout.fragment_orders) {
 
     @Inject
     lateinit var db: FirebaseFirestore
+
+    @Inject
+    lateinit var itemMapper: ItemMapper
     private lateinit var orderAdapter: OrderAdapter
 
 
@@ -38,7 +44,7 @@ class OrderFragment : Fragment(R.layout.fragment_orders) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         orderAdapter = OrderAdapter {
-
+            navigateToDetail(it)
         }
         binding.apply {
             recyclerViewShowOrders.apply {
@@ -47,6 +53,27 @@ class OrderFragment : Fragment(R.layout.fragment_orders) {
             }
         }
         getData()
+    }
+
+    private fun navigateToDetail(orders: Orders) = lifecycleScope.launchWhenStarted {
+        viewModel.getOrderDetail(orders.type!!, orders.path!!).collect { dataState ->
+            when (dataState) {
+                is DataState.Error -> {
+                    Toast.makeText(requireContext(), "${dataState.exception}", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                DataState.Loading -> {
+
+                }
+                is DataState.Success -> {
+                    findNavController().navigate(
+                        OrderFragmentDirections.actionOrderFragmentToItemDetailFragment(
+                            itemMapper.mapFromEntity(dataState.data)
+                        )
+                    )
+                }
+            }
+        }
     }
 
     private fun getData() = lifecycleScope.launchWhenCreated {
