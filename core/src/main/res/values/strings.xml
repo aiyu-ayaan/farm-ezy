@@ -67,4 +67,10 @@
     <string name="cod">Cod</string>
     <string name="online">Online</string>
     <string name="payment_type_text">Payment Type :</string>
+    <string name="herbicides">Herbicides</string>
+    <string name="growth_promoters">Growth Promoters</string>
+    <string name="GROWTH_PROMOTERS">GROWTH PROMOTERS</string>
+    <string name="HERBICIDES">HERBICIDES</string>
+    <string name="INSECTICIDES">INSECTICIDES</string>'
+    <string name="show_all">Show All</string>
 </resources>

@@ -29,7 +29,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/text_view_view_all"
+            android:id="@+id/text_view_insecticides_view_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -41,6 +41,7 @@
             tools:ignore="RelativeOverlap" />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/m1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_insecticides"
@@ -53,5 +54,82 @@
                 android:layout_height="match_parent" />
         </com.google.android.material.card.MaterialCardView>
 
+        <TextView
+            android:id="@+id/text_view_herbicides"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/m1"
+            android:layout_marginStart="@dimen/grid_1"
+            android:layout_marginTop="@dimen/grid_1"
+            android:layout_marginBottom="@dimen/grid_1"
+            android:text="@string/herbicides"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_view_herbicides_view_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/m1"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/grid_1"
+            android:layout_marginEnd="@dimen/grid_1"
+            android:layout_marginBottom="@dimen/grid_1"
+            android:text="@string/view_all"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            tools:ignore="RelativeOverlap" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/m2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_herbicides"
+            app:cardBackgroundColor="@color/MainColor"
+            app:strokeColor="@color/card_corner">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/show_herbicides"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/text_view_growth_promoters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/m2"
+            android:layout_marginStart="@dimen/grid_1"
+            android:layout_marginTop="@dimen/grid_1"
+            android:layout_marginBottom="@dimen/grid_1"
+            android:text="@string/growth_promoters"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_view_growth_promoters_view_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/m2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/grid_1"
+            android:layout_marginEnd="@dimen/grid_1"
+            android:layout_marginBottom="@dimen/grid_1"
+            android:text="@string/view_all"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            tools:ignore="RelativeOverlap" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/m3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_growth_promoters"
+            app:cardBackgroundColor="@color/MainColor"
+            app:strokeColor="@color/card_corner">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/show_growth_promoters"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.google.android.material.card.MaterialCardView>
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

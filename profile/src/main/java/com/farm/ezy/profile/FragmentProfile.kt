@@ -51,7 +51,7 @@ class FragmentProfile : Fragment(R.layout.fragment_profile) {
         FragmentProfileDirections.actionFragmentProfileToFragmentAddress().let {
             findNavController().navigate(it.actionId,
                 Bundle().apply {
-                    putString("uid", auth.currentUser?.uid ?: "zcUL7f9HDGbJWdxZ1bYLcvfwTFA3")
+                    putString("uid", auth.currentUser?.uid!!)
                 })
         }
     }
@@ -61,7 +61,7 @@ class FragmentProfile : Fragment(R.layout.fragment_profile) {
         returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ false)
         val action =
             FragmentProfileDirections.actionFragmentProfileToOrderFragment(
-                auth.currentUser?.uid ?: "zcUL7f9HDGbJWdxZ1bYLcvfwTFA3"
+                auth.currentUser?.uid!!
             )
         findNavController().navigate(action)
 
@@ -69,7 +69,7 @@ class FragmentProfile : Fragment(R.layout.fragment_profile) {
 
     private fun getData() {
         lifecycleScope.launchWhenStarted {
-            viewModel.getUser(auth.uid ?: "zcUL7f9HDGbJWdxZ1bYLcvfwTFA3").collectLatest {
+            viewModel.getUser(auth.uid!!).collectLatest {
                 when (it) {
                     is DataState.Error -> {
                         Toast.makeText(requireContext(), "${it.exception}", Toast.LENGTH_SHORT)

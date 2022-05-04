@@ -71,9 +71,9 @@ class ItemMapper @Inject constructor() : EntityMapper<ItemGet, ItemSet> {
             entity.dosage!!,
             entity.currently_avl!!,
             entity.img_link1!!,
-            entity.img_link2!!,
-            entity.img_link3!!,
-            entity.img_link4!!,
+            entity.img_link2 ?: "",
+            entity.img_link3 ?: "",
+            entity.img_link4 ?: "",
             entity.path!!,
             entity.type!!
         )

@@ -26,19 +26,52 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     @Inject
     lateinit var itemMapper: ItemMapper
 
-    private lateinit var homeAdapter: HomeAdapter
+    private lateinit var insecticidesAdapter: HomeAdapter
+    private lateinit var growthPromoterAdapter: HomeAdapter
+    private lateinit var herbicidesAdapter: HomeAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        homeAdapter = HomeAdapter {
+        insecticidesAdapter = HomeAdapter {
+            navigateToDetail(it)
+        }
+        growthPromoterAdapter = HomeAdapter {
+            navigateToDetail(it)
+        }
+        herbicidesAdapter = HomeAdapter {
             navigateToDetail(it)
         }
         binding.apply {
             showInsecticides.apply {
-                adapter = homeAdapter
+                adapter = insecticidesAdapter
                 layoutManager = StaggeredGridLayoutManager(1, LinearLayoutManager.HORIZONTAL)
+            }
+            showGrowthPromoters.apply {
+                adapter = growthPromoterAdapter
+                layoutManager = StaggeredGridLayoutManager(1, LinearLayoutManager.HORIZONTAL)
+            }
+            showHerbicides.apply {
+                adapter = herbicidesAdapter
+                layoutManager = StaggeredGridLayoutManager(1, LinearLayoutManager.HORIZONTAL)
+            }
+            textViewGrowthPromotersViewAll.setOnClickListener {
+                navigateToViewAll(resources.getString(com.farm.ezy.core.R.string.GROWTH_PROMOTERS))
+            }
+            textViewInsecticidesViewAll.setOnClickListener {
+                navigateToViewAll(resources.getString(com.farm.ezy.core.R.string.INSECTICIDES))
+            }
+            textViewHerbicidesViewAll.setOnClickListener {
+                navigateToViewAll(resources.getString(com.farm.ezy.core.R.string.HERBICIDES))
             }
         }
         loadData()
+    }
+
+    private fun navigateToViewAll(type: String) {
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToFragmentShowAll(
+                type
+            )
+        )
     }
 
     private fun navigateToDetail(itemGet: ItemGet) {
@@ -49,7 +82,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun loadData() = lifecycleScope.launchWhenStarted {
-        viewModel.dataState.observe(viewLifecycleOwner) { dataState ->
+        viewModel.dataStateInsecticides.observe(viewLifecycleOwner) { dataState ->
             when (dataState) {
                 is DataState.Error -> {
                     Toast.makeText(requireContext(), "${dataState.exception}", Toast.LENGTH_SHORT)
@@ -59,7 +92,35 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
                 }
                 is DataState.Success -> {
-                    homeAdapter.submitList(dataState.data)
+                    insecticidesAdapter.submitList(dataState.data)
+                }
+            }
+        }
+        viewModel.dataStateHerbicides.observe(viewLifecycleOwner) { dataState ->
+            when (dataState) {
+                is DataState.Error -> {
+                    Toast.makeText(requireContext(), "${dataState.exception}", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                DataState.Loading -> {
+
+                }
+                is DataState.Success -> {
+                    herbicidesAdapter.submitList(dataState.data)
+                }
+            }
+        }
+        viewModel.dataStateGrowthPromoter.observe(viewLifecycleOwner) { dataState ->
+            when (dataState) {
+                is DataState.Error -> {
+                    Toast.makeText(requireContext(), "${dataState.exception}", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                DataState.Loading -> {
+
+                }
+                is DataState.Success -> {
+                    growthPromoterAdapter.submitList(dataState.data)
                 }
             }
         }

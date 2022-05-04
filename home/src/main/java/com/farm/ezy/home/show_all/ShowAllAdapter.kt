@@ -1,4 +1,4 @@
-package com.farm.ezy.home
+package com.farm.ezy.home.show_all
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,9 +9,9 @@ import com.farm.ezy.core.models.items.ItemGet
 import com.farm.ezy.core.utils.loadImageDefault
 import com.farm.ezy.home.databinding.RowHomeBinding
 
-class HomeAdapter constructor(
+class ShowAllAdapter constructor(
     private val listener: (ItemGet) -> Unit
-) : ListAdapter<ItemGet, HomeAdapter.HomeItemView>(DiffUtilsItem()) {
+) : ListAdapter<ItemGet, ShowAllAdapter.HomeItemView>(DiffUtilsItem()) {
 
     inner class HomeItemView(
         private val binding: RowHomeBinding

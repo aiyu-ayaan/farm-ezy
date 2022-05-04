@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_itemDetailFragment"
             app:destination="@id/itemDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_fragmentShowAll"
+            app:destination="@id/fragmentShowAll" />
     </fragment>
     <fragment
         android:id="@+id/itemDetailFragment"
@@ -28,4 +31,16 @@
             app:destination="@id/nav_graph_address" />
     </fragment>
     <include app:graph="@navigation/nav_graph_address" />
+    <fragment
+        android:id="@+id/fragmentShowAll"
+        android:name="com.farm.ezy.home.show_all.FragmentShowAll"
+        android:label="@string/show_all"
+        tools:layout="@layout/fragment_show_all" >
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentShowAll_to_itemDetailFragment"
+            app:destination="@id/itemDetailFragment" />
+    </fragment>
 </navigation>
