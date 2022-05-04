@@ -63,11 +63,11 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginEnd="@dimen/grid_1"
                 android:gravity="center"
-                app:strokeColor="@color/card_corner"
                 android:text="@string/edit"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
                 android:textColor="@color/textColor"
-                app:cornerRadius="@dimen/grid_1" />
+                app:cornerRadius="@dimen/grid_1"
+                app:strokeColor="@color/card_corner" />
 
             <Button
                 android:id="@+id/button_remove"

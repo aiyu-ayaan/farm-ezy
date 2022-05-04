@@ -23,6 +23,7 @@ data class ItemGet(
     val img_link2: String? = null,
     val img_link3: String? = null,
     val img_link4: String? = null,
+    val path: String? = null
 )
 
 @Keep
@@ -42,6 +43,7 @@ data class ItemSet(
     val img_link2: String,
     val img_link3: String,
     val img_link4: String,
+    val path: String
 ) : Parcelable
 
 
@@ -70,6 +72,7 @@ class ItemMapper @Inject constructor() : EntityMapper<ItemGet, ItemSet> {
             entity.img_link2!!,
             entity.img_link3!!,
             entity.img_link4!!,
+            entity.path!!
         )
 
     override fun mapToEntity(domainEntity: ItemSet): ItemGet =
@@ -88,5 +91,6 @@ class ItemMapper @Inject constructor() : EntityMapper<ItemGet, ItemSet> {
             domainEntity.img_link2,
             domainEntity.img_link3,
             domainEntity.img_link4,
+            domainEntity.path
         )
 }

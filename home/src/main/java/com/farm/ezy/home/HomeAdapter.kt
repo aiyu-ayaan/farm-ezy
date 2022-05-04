@@ -9,11 +9,22 @@ import com.farm.ezy.core.models.items.ItemGet
 import com.farm.ezy.core.utils.loadImageDefault
 import com.farm.ezy.home.databinding.RowHomeBinding
 
-class HomeAdapter : ListAdapter<ItemGet, HomeAdapter.HomeItemView>(DiffUtilsItem()) {
+class HomeAdapter constructor(
+    private val listener: (ItemGet) -> Unit
+) : ListAdapter<ItemGet, HomeAdapter.HomeItemView>(DiffUtilsItem()) {
 
     inner class HomeItemView(
         private val binding: RowHomeBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                val pos = absoluteAdapterPosition
+                if (pos != RecyclerView.NO_POSITION)
+                    listener.invoke(getItem(pos))
+            }
+        }
+
         fun bind(item: ItemGet) = binding.apply {
             textViewItemName.text = item.name
             textViewPrice.text =

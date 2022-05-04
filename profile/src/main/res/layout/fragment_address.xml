@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,15 +15,18 @@
         android:id="@+id/recycler_view_address"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/button_add_address" />
+        android:layout_above="@id/button_add_order_place" />
 
     <Button
-        android:id="@+id/button_add_address"
-        style="@style/Widget.Material3.Button.Icon"
+        android:id="@+id/button_add_order_place"
+        style="@style/Widget.Material3.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/grid_1"
         android:padding="@dimen/grid_2"
-        android:text="@string/add"
-        android:textColor="@color/textColor" />
+        android:text="@string/place_order"
+        android:textColor="@color/textColor"
+        android:visibility="gone"
+        app:cornerRadius="@dimen/grid_1" />
 </RelativeLayout>

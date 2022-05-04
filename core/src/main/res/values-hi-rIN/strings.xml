@@ -20,7 +20,7 @@
     <string name="app_name_with_version">Farm Ezy Version 1.0</string>
     <string name="orders_watchlist">Orders &amp; WatchList</string>
     <string name="orders">Orders</string>
-    <string name="watchlist">WatchList</string>
+    <string name="wish_list">WatchList</string>
     <string name="edit">Edit</string>
     <string name="remove">Remove</string>
     <string name="content_image">Content Image</string>

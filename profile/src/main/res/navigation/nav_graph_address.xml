@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_address"
+    app:startDestination="@id/fragmentAddress">
+    <fragment
+        android:id="@+id/fragmentAddress"
+        android:name="com.farm.ezy.profile.address.FragmentAddress"
+        android:label="@string/address"
+        tools:layout="@layout/fragment_address">
+        <argument
+            android:name="uid"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentAddress_to_bottomSheetAddEditAddress"
+            app:destination="@id/bottomSheetAddEditAddress" />
+        <argument
+            android:name="item"
+            app:argType="com.farm.ezy.core.models.items.ItemSet" />
+        <argument
+            android:name="quantity"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_fragmentAddress_to_fragmentOrderPlaced"
+            app:destination="@id/fragmentOrderPlaced"
+            app:popUpTo="@id/nav_graph_address" />
+    </fragment>
+    <dialog
+        android:id="@+id/bottomSheetAddEditAddress"
+        android:name="com.farm.ezy.profile.address.add_edit_address.BottomSheetAddEditAddress"
+        android:label="bottom_sheet_add_edit"
+        tools:layout="@layout/bottom_sheet_add_edit">
+        <argument
+            android:name="address"
+            android:defaultValue="@null"
+            app:argType="com.farm.ezy.core.models.address.AddressSet"
+            app:nullable="true" />
+        <argument
+            android:name="uid"
+            app:argType="string" />
+    </dialog>
+    <fragment
+        android:id="@+id/fragmentOrderPlaced"
+        android:name="com.farm.ezy.profile.order_placed.FragmentConfirmOrder"
+        android:label="@string/blank"
+        tools:layout="@layout/fragment_confirm_order">
+        <argument
+            android:name="order"
+            app:argType="com.farm.ezy.core.models.order.OrdersSet" />
+        <action
+            android:id="@+id/action_fragmentOrderPlaced_to_fragmentPaymentMethod"
+            app:destination="@id/fragmentPaymentMethod" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentPaymentMethod"
+        android:name="com.farm.ezy.profile.order_placed.FragmentPaymentMethod"
+        android:label="@string/payment"
+        tools:layout="@layout/fragment_payment_method">
+        <argument
+            android:name="order"
+            app:argType="com.farm.ezy.core.models.order.OrdersSet" />
+    </fragment>
+</navigation>

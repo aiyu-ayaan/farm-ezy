@@ -48,10 +48,12 @@ class FragmentProfile : Fragment(R.layout.fragment_profile) {
     private fun navigateToAddress() {
         enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ true)
         returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ false)
-        val action = FragmentProfileDirections.actionFragmentProfileToFragmentAddress(
-            auth.currentUser?.uid ?: "zcUL7f9HDGbJWdxZ1bYLcvfwTFA3"
-        )
-        findNavController().navigate(action)
+        FragmentProfileDirections.actionFragmentProfileToFragmentAddress().let {
+            findNavController().navigate(it.actionId,
+                Bundle().apply {
+                    putString("uid", auth.currentUser?.uid ?: "zcUL7f9HDGbJWdxZ1bYLcvfwTFA3")
+                })
+        }
     }
 
     private fun navigateToOrder() {

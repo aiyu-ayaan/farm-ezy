@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/grid_1"
+    android:theme="@style/Theme.Core"
+    tools:context="com.farm.ezy.profile.order_placed.FragmentConfirmOrder">
+
+    <include
+        android:id="@+id/row_order"
+        layout="@layout/row_orders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_order_placed"
+        android:layout_marginTop="@dimen/grid_1" />
+
+    <TextView
+        android:id="@+id/text_view_order_placed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/grid_6"
+        android:text="@string/confirm_order"
+        android:textAppearance="?attr/textAppearanceHeadline4" />
+
+    <Button
+        android:id="@+id/button_bca"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/row_order"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/grid_2"
+        android:gravity="start"
+        android:padding="@dimen/grid_2"
+        android:text="@string/proceed_to_payment"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="@color/colorAccent"
+        app:cornerRadius="@dimen/grid_1" />
+</RelativeLayout>

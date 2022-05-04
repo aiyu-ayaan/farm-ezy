@@ -20,7 +20,7 @@
     <string name="app_name_with_version">Farm Ezy Version 1.0</string>
     <string name="orders_watchlist">Orders &amp; WishList</string>
     <string name="orders">Orders</string>
-    <string name="watchlist">Wish List</string>
+    <string name="wish_list">Wish List</string>
     <string name="edit">Edit</string>
     <string name="remove">Remove</string>
     <string name="content_image">Content Image</string>
@@ -29,6 +29,7 @@
     <string name="money">Price\n₹ %s</string>
     <string name="price">₹ %s</string>
     <string name="quantity">Quantity\nx %s</string>
+    <string name="quantity_item">Quantity</string>
     <string name="detail"><u>Detail</u></string>
     <string name="address">Address</string>
     <string name="add">Add</string>
@@ -53,4 +54,14 @@
     <string name="deleted">Deleted</string>
     <string name="insecticides">Insecticides</string>
     <string name="view_all">View All</string>
+    <string name="buy">Buy</string>
+    <string name="_1">1</string>
+    <string name="seller">Seller : %s</string>
+    <string name="place_order">Place Order</string>
+    <string name="order_placed">Order Placed</string>
+    <string name="back">Back</string>
+    <string name="payment_type">Payment Type : %s</string>
+    <string name="payment">Payment</string>
+    <string name="confirm_order">Confirm Order</string>
+    <string name="proceed_to_payment">Proceed to payment</string>
 </resources>

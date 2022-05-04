@@ -10,7 +10,8 @@ import com.farm.ezy.profile.databinding.RowAddressBinding
 
 class AddressAdapter(
     private val edit: (AddressGet) -> Unit,
-    private val delete: (AddressGet) -> Unit
+    private val delete: (AddressGet) -> Unit,
+    private val itemClick: (AddressGet) -> Unit
 ) :
     ListAdapter<AddressGet, AddressAdapter.AddressViewHolder>(DiffUtilsAddressGet()) {
 
@@ -19,6 +20,11 @@ class AddressAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
+            binding.root.setOnClickListener {
+                val pos = absoluteAdapterPosition
+                if (pos != RecyclerView.NO_POSITION)
+                    itemClick.invoke(getItem(pos))
+            }
             binding.buttonEdit.setOnClickListener {
                 val pos = absoluteAdapterPosition
                 if (pos != RecyclerView.NO_POSITION)

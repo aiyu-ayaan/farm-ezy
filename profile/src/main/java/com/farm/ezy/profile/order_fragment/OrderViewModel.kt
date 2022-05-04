@@ -12,5 +12,5 @@ class OrderViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : ViewModel() {
     val uid = state.get<String>("uid")
-    fun getOrders(uid:String) = userRepository.getOrder(uid)
+    fun getOrders(uid:String) = userRepository.getOrders(uid)
 }
