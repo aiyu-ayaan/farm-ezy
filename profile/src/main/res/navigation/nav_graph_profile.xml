@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_fragmentProfile_to_fragmentWishlist"
             app:destination="@id/fragmentWishlist" />
+        <action
+            android:id="@+id/action_fragmentProfile_to_fragmentComponentUse"
+            app:destination="@id/fragmentComponentUse" />
     </fragment>
     <fragment
         android:id="@+id/orderFragment"
@@ -64,7 +67,7 @@
         android:id="@+id/fragmentWishlist"
         android:name="com.farm.ezy.profile.wishlist.FragmentWishlist"
         android:label="@string/wish_list"
-        tools:layout="@layout/fragment_wish_list" >
+        tools:layout="@layout/fragment_wish_list">
         <action
             android:id="@+id/action_fragmentWishlist_to_nav_graph_address"
             app:destination="@id/nav_graph_address" />
@@ -75,4 +78,9 @@
             android:id="@+id/action_fragmentWishlist_to_itemDetailFragment"
             app:destination="@id/itemDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentComponentUse"
+        android:name="com.farm.ezy.profile.component_use.FragmentComponentUse"
+        android:label="@string/acknowledgement"
+        tools:layout="@layout/fragment_component_use" />
 </navigation>

@@ -10,12 +10,16 @@
 package com.farm.ezy.core.utils
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.LocaleList
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -170,4 +174,19 @@ fun Context.applyNewLocale(locale: Locale): Context {
         resources.updateConfiguration(config, resources.displayMetrics)
     }
     return this
+}
+fun String.openLinks(activity: Activity) {
+    try {
+        activity.startActivity(
+            Intent(Intent.ACTION_VIEW).also {
+                it.data = Uri.parse(this)
+            }
+        )
+    } catch (e: Exception) {
+        Toast.makeText(
+            activity,
+            activity.resources.getString(R.string.no_activity),
+            Toast.LENGTH_SHORT
+        ).show()
+    }
 }

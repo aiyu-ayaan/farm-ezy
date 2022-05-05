@@ -30,6 +30,7 @@
         <entry key="..\:/Android Project/Sem 6 Project/farm-ezy/profile/src/main/res/drawable/ic_edit.xml" value="0.2155" />
         <entry key="..\:/Android Project/Sem 6 Project/farm-ezy/profile/src/main/res/layout/bottom_sheet_add_edit.xml" value="0.3625" />
         <entry key="..\:/Android Project/Sem 6 Project/farm-ezy/profile/src/main/res/layout/fragment_address.xml" value="0.3625" />
+        <entry key="..\:/Android Project/Sem 6 Project/farm-ezy/profile/src/main/res/layout/fragment_component_use.xml" value="0.3625" />
         <entry key="..\:/Android Project/Sem 6 Project/farm-ezy/profile/src/main/res/layout/fragment_confirm_order.xml" value="0.25" />
         <entry key="..\:/Android Project/Sem 6 Project/farm-ezy/profile/src/main/res/layout/fragment_item_detail.xml" value="0.3625" />
         <entry key="..\:/Android Project/Sem 6 Project/farm-ezy/profile/src/main/res/layout/fragment_order_placed.xml" value="0.3625" />
@@ -38,6 +39,7 @@
         <entry key="..\:/Android Project/Sem 6 Project/farm-ezy/profile/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Android Project/Sem 6 Project/farm-ezy/profile/src/main/res/layout/fragment_wish_list.xml" value="0.3625" />
         <entry key="..\:/Android Project/Sem 6 Project/farm-ezy/profile/src/main/res/layout/row_address.xml" value="0.3625" />
+        <entry key="..\:/Android Project/Sem 6 Project/farm-ezy/profile/src/main/res/layout/row_component.xml" value="0.3625" />
         <entry key="..\:/Android Project/Sem 6 Project/farm-ezy/profile/src/main/res/layout/row_orders.xml" value="0.3625" />
         <entry key="..\:/Android Project/Sem 6 Project/farm-ezy/profile/src/main/res/layout/row_wish_list.xml" value="0.3625" />
         <entry key="..\:/Android Project/Sem 6 Project/farm-ezy/profile/src/main/res/menu/menu_add.xml" value="0.3625" />

@@ -139,6 +139,7 @@
                 android:text="@string/orders_watchlist" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/m1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_view_orders"
@@ -180,17 +181,82 @@
                         android:textAppearance="?attr/textAppearanceBodyLarge"
                         android:textColor="@color/textColor"
                         app:cornerRadius="@dimen/grid_1" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:dividerColor="@color/card_corner" />
+
+                    <Button
+                        android:id="@+id/button_query"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:padding="@dimen/grid_2"
+                        android:text="@string/query"
+                        android:textAppearance="?attr/textAppearanceBodyLarge"
+                        android:textColor="@color/textColor"
+                        app:cornerRadius="@dimen/grid_1" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
 
             <TextView
+                android:id="@+id/text_view_about_app"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@id/m1"
+                android:layout_marginStart="@dimen/grid_0_5"
+                android:layout_marginTop="@dimen/grid_1"
+                android:text="@string/about_app" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/m2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_view_about_app"
+                android:layout_marginTop="@dimen/grid_1"
+                app:cardBackgroundColor="@color/MainColor"
+                app:strokeColor="@color/card_corner">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/grid_0_5">
+
+                    <Button
+                        android:id="@+id/button_acknowledgement"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:padding="@dimen/grid_2"
+                        android:text="@string/acknowledgement"
+                        android:textAppearance="?attr/textAppearanceBodyLarge"
+                        android:textColor="@color/textColor"
+                        app:cornerRadius="@dimen/grid_1" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <Button
+                android:id="@+id/button_logout"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/m2"
                 android:layout_centerHorizontal="true"
-                android:text="@string/app_name_with_version"
-                android:textAppearance="?attr/textAppearanceCaption" />
+                android:layout_marginTop="@dimen/grid_2"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/grid_2"
+                android:text="@string/log_out"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textColor="@color/colorAccent"
+                app:cornerRadius="@dimen/grid_1" />
+
         </RelativeLayout>
     </ScrollView>
 </androidx.core.widget.NestedScrollView>

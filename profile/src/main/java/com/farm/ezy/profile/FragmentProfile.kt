@@ -44,8 +44,26 @@ class FragmentProfile : Fragment(R.layout.fragment_profile) {
             buttonWatchlist.setOnClickListener {
                 navigateToWishList()
             }
+            buttonAcknowledgement.setOnClickListener {
+                navigateToAcknowledgement()
+            }
+            buttonQuery.setOnClickListener {
+                navigateToQuery()
+            }
         }
         getData()
+    }
+
+    private fun navigateToQuery() {
+
+    }
+
+    private fun navigateToAcknowledgement() {
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ true)
+        returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ false)
+        findNavController().navigate(
+            FragmentProfileDirections.actionFragmentProfileToFragmentComponentUse()
+        )
     }
 
     private fun navigateToWishList() {

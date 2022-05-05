@@ -74,4 +74,10 @@
     <string name="INSECTICIDES">INSECTICIDES</string>'
     <string name="show_all">Show All</string>
     <string name="added_on">Added On: %s</string>
+    <string name="about_app">About App</string>
+    <string name="acknowledgement">Acknowledgement</string>
+    <string name="dev">Dev</string>
+    <string name="log_out">Log Out</string>
+    <string name="no_activity">No Activity</string>
+    <string name="query">Query</string>
 </resources>

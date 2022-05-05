@@ -116,7 +116,9 @@ class UserRepository @Inject constructor(
                     launch(Dispatchers.Main) {
                         send(DataState.Loading)
                         val item = documentSnapShot?.toObject(ItemGet::class.java)
-                        send(DataState.Success(item!!))
+                        item?.let {
+                            send(DataState.Success(item))
+                        }
                     }
                 }
             awaitClose()
