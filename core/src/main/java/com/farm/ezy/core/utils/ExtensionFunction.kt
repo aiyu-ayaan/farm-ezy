@@ -175,6 +175,7 @@ fun Context.applyNewLocale(locale: Locale): Context {
     }
     return this
 }
+
 fun String.openLinks(activity: Activity) {
     try {
         activity.startActivity(
@@ -190,3 +191,16 @@ fun String.openLinks(activity: Activity) {
         ).show()
     }
 }
+
+fun Activity.openQuery() =
+    this.startActivity(
+        Intent.createChooser(
+            Intent()
+                .also {
+                    it.putExtra(Intent.EXTRA_EMAIL, resources.getStringArray(R.array.email))
+                    it.putExtra(Intent.EXTRA_SUBJECT, resources.getString(R.string.query))
+                    it.type = "text/html"
+                    it.setPackage(resources.getString(R.string.gmail_package))
+                }, resources.getString(R.string.query)
+        )
+    )

@@ -91,7 +91,7 @@ class ItemDetailFragment : Fragment(R.layout.fragment_item_detail) {
                                 .isEmpty()
                         ) 1 else binding.editTextQuantity.text.toString().toInt()
                     )
-                    putString("wishListPath", item.path)
+                    putString("wishListPath", "")
                 }
             )
         }

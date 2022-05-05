@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
 import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import com.farm.ezy.core.models.user.UserGet
 import com.farm.ezy.core.utils.DataState
 import com.farm.ezy.core.utils.loadImageCircular
+import com.farm.ezy.core.utils.openQuery
 import com.farm.ezy.profile.databinding.FragmentProfileBinding
 import com.google.android.material.transition.MaterialSharedAxis
 import com.google.firebase.auth.FirebaseAuth
@@ -50,12 +53,27 @@ class FragmentProfile : Fragment(R.layout.fragment_profile) {
             buttonQuery.setOnClickListener {
                 navigateToQuery()
             }
+            buttonLogout.setOnClickListener {
+                logout()
+            }
         }
         getData()
     }
 
-    private fun navigateToQuery() {
+    private fun logout() {
+        auth.signOut()
 
+        val request = NavDeepLinkRequest.Builder
+            .fromUri("android-app://com.farm.ezy/login".toUri())
+            .build()
+        findNavController().popBackStack(R.id.nav_graph_profile, false)
+        findNavController().navigate(
+            request
+        )
+    }
+
+    private fun navigateToQuery() {
+        requireActivity().openQuery()
     }
 
     private fun navigateToAcknowledgement() {
@@ -128,4 +146,5 @@ class FragmentProfile : Fragment(R.layout.fragment_profile) {
             )
         }
     }
+
 }

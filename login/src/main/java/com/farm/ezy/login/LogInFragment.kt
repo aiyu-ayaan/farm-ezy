@@ -34,7 +34,7 @@ class LogInFragment : Fragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
         requireActivity().window
             .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
-
+        findNavController().popBackStack(R.id.logInFragment, false)
         binding.apply {
             buttonContinue.setOnClickListener {
                 handleButtonClick(binding.outlinedTextField.editText?.text.toString())

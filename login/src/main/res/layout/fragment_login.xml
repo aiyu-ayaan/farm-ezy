@@ -65,9 +65,9 @@
             android:layout_height="wrap_content"
             android:inputType="phone"
             android:maxLength="10"
-            android:text="7879865693"
             android:textColor="@color/textColor"
-            android:textColorHint="@color/textColorSecondary" />
+            android:textColorHint="@color/textColorSecondary"
+            tools:text="7879865693" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,6 +78,7 @@
         android:backgroundTint="@color/colorAccent"
         android:text="@string/sign_in_continue"
         android:textAppearance="?attr/textAppearanceTitleMedium"
+        android:textColor="@color/textColor"
         app:cornerRadius="@dimen/grid_0_5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

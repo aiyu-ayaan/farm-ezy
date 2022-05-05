@@ -68,6 +68,7 @@ class FragmentWishlist : Fragment(R.layout.fragment_wish_list) {
                                     "quantity",
                                     wish.quantity!!
                                 )
+                                putString("wishListPath", wish.path)
                             })
                     }
                 }

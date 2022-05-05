@@ -61,17 +61,20 @@ class FragmentAddress : Fragment(R.layout.fragment_address) {
             }
         }
         viewModel.wishListPath?.let {
-            deleteItemFromWishList(it)
+            if (it.isNotBlank()) {
+                deleteItemFromWishList(it)
+            }
         }
         setHasOptionsMenu(true)
         getDate()
     }
 
     private fun deleteItemFromWishList(s: String) {
+        Toast.makeText(requireContext(), "$s", Toast.LENGTH_SHORT).show()
         db.collection("Users").document(viewModel.uid!!)
             .collection("wishlist").document(s)
             .delete().addOnCompleteListener {
-                Toast.makeText(requireContext(), "DOne", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Done", Toast.LENGTH_SHORT).show()
             }.addOnFailureListener {
                 Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_SHORT).show()
             }

@@ -80,4 +80,9 @@
     <string name="log_out">Log Out</string>
     <string name="no_activity">No Activity</string>
     <string name="query">Query</string>
+
+    <string-array name="email">
+        <item>farmezy5@gmail.com</item>
+    </string-array>
+    <string name="gmail_package" translatable="false">com.google.android.gm</string>
 </resources>

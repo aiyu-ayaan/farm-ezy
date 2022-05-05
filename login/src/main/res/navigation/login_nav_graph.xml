@@ -17,6 +17,7 @@
             app:destination="@id/nav_graph_home"
             app:popUpTo="@id/logInFragment"
             app:popUpToInclusive="true" />
+        <deepLink app:uri="android-app://com.farm.ezy/login" />
     </fragment>
     <fragment
         android:id="@+id/otpFragment"

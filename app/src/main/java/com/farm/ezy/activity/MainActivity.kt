@@ -5,13 +5,16 @@ import android.viewbinding.library.activity.viewBinding
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.farm.ezy.R
+import com.farm.ezy.core.utils.currentNavigationFragment
 import com.farm.ezy.databinding.ActivityMainBinding
+import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -46,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun onChangeDestination() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
+            setExitTransition()
             when (destination.id) {
                 com.farm.ezy.home.R.id.homeFragment, com.farm.ezy.profile.R.id.fragmentProfile -> {
                     binding.bottomLayout.isVisible = true
@@ -54,6 +58,18 @@ class MainActivity : AppCompatActivity() {
                     binding.bottomLayout.isVisible = false
                 }
             }
+
+        }
+    }
+
+    private fun getCurrentFragment(): Fragment? =
+        supportFragmentManager.currentNavigationFragment
+
+
+    private fun setExitTransition() {
+        getCurrentFragment()?.apply {
+            exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ true)
+            reenterTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ false)
         }
     }
 
