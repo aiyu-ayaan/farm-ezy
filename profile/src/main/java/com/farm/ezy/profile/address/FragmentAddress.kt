@@ -60,8 +60,21 @@ class FragmentAddress : Fragment(R.layout.fragment_address) {
                 layoutManager = LinearLayoutManager(requireContext())
             }
         }
+        viewModel.wishListPath?.let {
+            deleteItemFromWishList(it)
+        }
         setHasOptionsMenu(true)
         getDate()
+    }
+
+    private fun deleteItemFromWishList(s: String) {
+        db.collection("Users").document(viewModel.uid!!)
+            .collection("wishlist").document(s)
+            .delete().addOnCompleteListener {
+                Toast.makeText(requireContext(), "DOne", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener {
+                Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun placeOrderRequest(address: AddressSet) = binding.apply {

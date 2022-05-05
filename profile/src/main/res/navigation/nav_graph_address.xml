@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_fragmentAddress_to_fragmentPaymentMethod"
             app:destination="@id/fragmentPaymentMethod" />
+        <argument
+            android:name="wishListPath"
+            app:argType="string" />
     </fragment>
     <dialog
         android:id="@+id/bottomSheetAddEditAddress"

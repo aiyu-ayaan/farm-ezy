@@ -15,5 +15,5 @@ class OrderViewModel @Inject constructor(
     fun getOrders(uid: String) = userRepository.getOrders(uid)
 
     fun getOrderDetail(type: String, path: String) =
-        userRepository.getOrder(type, path)
+        userRepository.getOrderDetails(type, path)
 }

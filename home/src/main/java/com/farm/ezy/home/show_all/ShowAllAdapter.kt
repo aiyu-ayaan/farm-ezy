@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.farm.ezy.core.models.items.DiffUtilsItem
 import com.farm.ezy.core.models.items.ItemGet
 import com.farm.ezy.core.utils.loadImageDefault
-import com.farm.ezy.home.databinding.RowHomeBinding
+import com.farm.ezy.home.databinding.RowDetailBinding
 
 class ShowAllAdapter constructor(
     private val listener: (ItemGet) -> Unit
 ) : ListAdapter<ItemGet, ShowAllAdapter.HomeItemView>(DiffUtilsItem()) {
 
     inner class HomeItemView(
-        private val binding: RowHomeBinding
+        private val binding: RowDetailBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
@@ -42,7 +42,7 @@ class ShowAllAdapter constructor(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeItemView =
         HomeItemView(
-            RowHomeBinding.inflate(
+            RowDetailBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

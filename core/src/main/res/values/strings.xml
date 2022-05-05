@@ -28,7 +28,7 @@
     <string name="delivered_to">Delivered to :- %s</string>
     <string name="money">Price\n₹ %s</string>
     <string name="price">₹ %s</string>
-    <string name="quantity">Quantity\nx %s</string>
+    <string name="quantity">Quantity\n %s</string>
     <string name="quantity_item">Quantity</string>
     <string name="detail"><u>Detail</u></string>
     <string name="address">Address</string>
@@ -73,4 +73,5 @@
     <string name="HERBICIDES">HERBICIDES</string>
     <string name="INSECTICIDES">INSECTICIDES</string>'
     <string name="show_all">Show All</string>
+    <string name="added_on">Added On: %s</string>
 </resources>

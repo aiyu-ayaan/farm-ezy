@@ -41,8 +41,21 @@ class FragmentProfile : Fragment(R.layout.fragment_profile) {
             buttonAddress.setOnClickListener {
                 navigateToAddress()
             }
+            buttonWatchlist.setOnClickListener {
+                navigateToWishList()
+            }
         }
         getData()
+    }
+
+    private fun navigateToWishList() {
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ true)
+        returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, /* forward= */ false)
+        val action =
+            FragmentProfileDirections.actionFragmentProfileToFragmentWishlist(
+                auth.currentUser?.uid!!
+            )
+        findNavController().navigate(action)
     }
 
     private fun navigateToAddress() {

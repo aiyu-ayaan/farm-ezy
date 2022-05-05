@@ -3,14 +3,17 @@ package com.farm.ezy.home.item_detail
 import android.os.Bundle
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.farm.ezy.core.models.items.ItemSet
+import com.farm.ezy.core.models.wishlist.WishlistSet
 import com.farm.ezy.core.utils.loadImageDefault
 import com.farm.ezy.home.R
 import com.farm.ezy.home.databinding.FragmentItemDetailBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -21,6 +24,9 @@ class ItemDetailFragment : Fragment(R.layout.fragment_item_detail) {
 
     @Inject
     lateinit var auth: FirebaseAuth
+
+    @Inject
+    lateinit var db: FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -35,13 +41,44 @@ class ItemDetailFragment : Fragment(R.layout.fragment_item_detail) {
                 buttonBuy.setOnClickListener {
                     navigationToAddress(item)
                 }
+                buttonWishList.setOnClickListener {
+                    addItemToWishList()
+                }
             }
         }
+    }
 
+    private fun addItemToWishList() = viewModel.item?.let { item ->
+        val ref = db.collection("Users").document(auth.uid!!)
+            .collection("wishlist")
+        val id = ref.document().id
+        val wishlistSet = WishlistSet(
+            item.name,
+            item.name_hi,
+            item.img_link1,
+            ((if (binding.editTextQuantity.text.toString()
+                    .isEmpty()
+            ) 1 else binding.editTextQuantity.text.toString().toInt()) * item.price).toString(),
+            if (binding.editTextQuantity.text.toString()
+                    .isEmpty()
+            ) 1 else binding.editTextQuantity.text.toString().toInt(),
+            item.type,
+            id,
+            item.path
+        )
+        ref.document(id).set(wishlistSet).addOnSuccessListener {
+            Toast.makeText(
+                requireContext(),
+                resources.getString(com.farm.ezy.core.R.string.added),
+                Toast.LENGTH_SHORT
+            ).show()
+        }.addOnFailureListener {
+            Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun navigationToAddress(item: ItemSet) {
-        val uid = auth.uid ?: "zcUL7f9HDGbJWdxZ1bYLcvfwTFA3"
+        val uid = auth.uid
         ItemDetailFragmentDirections.actionItemDetailFragmentToNavGraphAddress().let {
             findNavController().navigate(
                 it.actionId,
@@ -52,8 +89,9 @@ class ItemDetailFragment : Fragment(R.layout.fragment_item_detail) {
                         "quantity",
                         if (binding.editTextQuantity.text.toString()
                                 .isEmpty()
-                        ) 0 else binding.editTextQuantity.text.toString().toInt()
+                        ) 1 else binding.editTextQuantity.text.toString().toInt()
                     )
+                    putString("wishListPath", item.path)
                 }
             )
         }

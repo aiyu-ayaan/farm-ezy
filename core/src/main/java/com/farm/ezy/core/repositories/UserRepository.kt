@@ -4,6 +4,7 @@ import com.farm.ezy.core.models.address.AddressGet
 import com.farm.ezy.core.models.items.ItemGet
 import com.farm.ezy.core.models.order.Orders
 import com.farm.ezy.core.models.user.UserGet
+import com.farm.ezy.core.models.wishlist.WishlistGet
 import com.farm.ezy.core.utils.DataState
 import com.farm.ezy.core.utils.NoItemFoundException
 import com.google.firebase.firestore.FirebaseFirestore
@@ -27,22 +28,6 @@ class UserRepository @Inject constructor(
                         send(DataState.Loading)
                         val user = documentSnapShot?.toObject(UserGet::class.java)
                         send(DataState.Success(user!!))
-                    }
-                }
-            awaitClose()
-        } catch (e: Exception) {
-            send(DataState.Error(e))
-        }
-    }
-
-    fun getOrder(type: String, path: String): Flow<DataState<ItemGet>> = channelFlow {
-        try {
-            db.collection(type).document(path)
-                .addSnapshotListener { documentSnapShot, error ->
-                    launch(Dispatchers.Main) {
-                        send(DataState.Loading)
-                        val item = documentSnapShot?.toObject(ItemGet::class.java)
-                        send(DataState.Success(item!!))
                     }
                 }
             awaitClose()
@@ -76,6 +61,30 @@ class UserRepository @Inject constructor(
         }
     }
 
+    fun getWishList(uid: String): Flow<DataState<List<WishlistGet>>> = channelFlow {
+        try {
+            val d = db.collection("Users").document(uid)
+                .collection("wishlist").orderBy("addedOn", Query.Direction.DESCENDING)
+            d.addSnapshotListener { value, error ->
+                launch(Dispatchers.Main) {
+                    if (error != null) {
+                        send(DataState.Error(error))
+                    } else {
+                        if (value!!.isEmpty) {
+                            send(DataState.Error(NoItemFoundException("No Data Found")))
+                        } else {
+                            val wishlist = value.toObjects(WishlistGet::class.java)
+                            send(DataState.Success(wishlist))
+                        }
+                    }
+                }
+            }
+            awaitClose()
+        } catch (e: java.lang.Exception) {
+            send(DataState.Error(e))
+        }
+    }
+
     fun getAddress(uid: String): Flow<DataState<List<AddressGet>>> = channelFlow {
         try {
             val d = db.collection("Users").document(uid)
@@ -96,6 +105,22 @@ class UserRepository @Inject constructor(
             }
             awaitClose()
         } catch (e: java.lang.Exception) {
+            send(DataState.Error(e))
+        }
+    }
+
+    fun getOrderDetails(type: String, path: String): Flow<DataState<ItemGet>> = channelFlow {
+        try {
+            db.collection(type).document(path)
+                .addSnapshotListener { documentSnapShot, error ->
+                    launch(Dispatchers.Main) {
+                        send(DataState.Loading)
+                        val item = documentSnapShot?.toObject(ItemGet::class.java)
+                        send(DataState.Success(item!!))
+                    }
+                }
+            awaitClose()
+        } catch (e: Exception) {
             send(DataState.Error(e))
         }
     }

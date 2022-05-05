@@ -38,7 +38,7 @@ class FragmentShowAll : Fragment(R.layout.fragment_show_all) {
         binding.apply {
             recyclerViewShowAll.apply {
                 adapter = showAllAdapter
-                layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+                layoutManager = StaggeredGridLayoutManager(1, LinearLayoutManager.VERTICAL)
             }
         }
         viewModel.getData(viewModel.type!!)
