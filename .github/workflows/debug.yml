@@ -1,9 +1,6 @@
 name: Pre-Release 🏗️ and 🚀
 
-on:
-  push:
-    tags:
-      - pre-release-v*
+on: workflow_dispatch
 
 jobs:
   build:
